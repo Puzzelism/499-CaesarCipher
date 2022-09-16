@@ -7,6 +7,8 @@ import org.junit.Test;
 
 public class Caesar {
 
+    // Cosc is awesome
+
     // alphabet for character matching
     public static final String ALPHA = "abcdefghijklmnopqrstuvwxyz";
 
