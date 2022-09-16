@@ -38,21 +38,16 @@ public class Caesar {
         int shiftAmt;
 
         // get input
-        System.out.println("Enter text to encrypt: ");
+        System.out.println("Enter text to encrypt/decrypt: ");
         input= scan.nextLine();
-        System.out.println("Enter amount to shift: ");
+        System.out.println("Enter the shift amount: ");
         shiftAmt = scan.nextInt();
-
-        /*
-         * 
-         * Advanced algorithms :o
-         * 
-         */
 
         scan.close();
 
         // output
-        System.out.println(encrypt(input, shiftAmt));
+        System.out.println("\nEncrypted Value: " + encrypt(input, shiftAmt));
+        System.out.println("Decrypted Value: " + input);
     }
 
     // tests
