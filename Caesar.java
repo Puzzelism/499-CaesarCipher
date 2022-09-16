@@ -30,6 +30,31 @@ public class Caesar {
         return result;
     }
 
+    public static String decrypt(String input, int shiftAmt){
+        // prepare return string
+        String result = "";
+        // simplify to lower case
+        String lowInput = input.toLowerCase();
+ 
+        for(int i=0; i < input.length(); i++){
+            // get position of each character
+            int index = ALPHA.indexOf(lowInput.charAt(i));
+            
+            // get decrypted char [ Encrypt with shift n = (x - n) % 26 ]
+            int decryptPos = (index - shiftAmt) % 26;
+ 
+            if(decryptPos < 0){
+                decryptPos = ALPHA.length() + decryptPos;
+            }
+
+            char decChar = ALPHA.charAt(decryptPos);
+
+            // add character to return string
+            result += decChar;
+        }
+        return result;
+    }
+
     public static void main(String args[]){
 
         // variable declaration
@@ -47,10 +72,10 @@ public class Caesar {
 
         // output
         System.out.println("\nEncrypted Value: " + encrypt(input, shiftAmt));
-        System.out.println("Decrypted Value: " + input);
+        System.out.println("Decrypted Value: " + decrypt(input, shiftAmt));
     }
 
-    // tests
+    // JUnit Tests
     @Test
     public void testEncrypt(){
         // Test encrypt "test" with shift amount 3
@@ -61,5 +86,17 @@ public class Caesar {
     public void testEncrypt2(){
         // Test encrypt "testing" with shift amount 5
         assertEquals("Testing", "yjxynsl", encrypt("testing", 5));
+    }
+
+    @Test
+    public void testDecrypt(){
+        // Test encrypt "test" with shift amount 3
+        assertEquals("Testing", "test", decrypt("whvw", 3));
+    }
+
+    @Test
+    public void testDecrypt2(){
+        // Test encrypt "testing" with shift amount 5
+        assertEquals("Testing", "testing", decrypt("yjxynsl", 5));
     }
 }
